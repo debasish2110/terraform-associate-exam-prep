@@ -3,4 +3,5 @@ provider "aws" {
   # access_key = "#######"
   # secret_key = "#######"
   shared_credentials_file = "/path/to/cred/.aws/credentials"
+  profile = "customProfile"
 }

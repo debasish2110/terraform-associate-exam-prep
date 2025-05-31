@@ -28,11 +28,12 @@ data "aws_availability_zones" "available" {
 ###############################################################################
 
 resource "aws_instance" "web_server" {
-  ami           = "xxxx"
-  instance_type = "t2.micro"
-  subnet_id     = "xxxxx"
-  availability_zone = tolist(data.aws_availability_zones.available.names)[each.value]
-  
+  count             = 3
+  ami               = "xxxx"
+  instance_type     = "t2.micro"
+  subnet_id         = "xxxxx"
+  availability_zone = tolist(data.aws_availability_zones.available.names)[count.index]
+
   tags = {
     Name  = local.server_name
     Owner = local.team
